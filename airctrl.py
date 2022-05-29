@@ -15,10 +15,10 @@ CLICK = CLICK_MESSAGE = MOVEMENT_START = M_START = None   # set null value
 
 hand_detection_method = 'yolo'  # Do not use solo for video feed
 
-if hand_detection_method is 'solo':
-    hand = SOLO(weights='weights\solo.h5', threshold=0.8)
-elif hand_detection_method is 'yolo':
-    hand = YOLO(weights='weights\yolo.h5', threshold=0.8)
+if hand_detection_method == 'solo':
+    hand = SOLO(weights='./weights/solo.h5', threshold=0.8)
+elif hand_detection_method == 'yolo':
+    hand = YOLO(weights='./weights/yolo.h5', threshold=0.8)
 else:
     assert False, "'" + hand_detection_method + "' hand detection does not exist. use either 'solo' or 'yolo' as hand detection method"
 
@@ -26,7 +26,7 @@ fingertips = Fingertips(weights='weights/classes8.h5')
 
 cam = cv2.VideoCapture(0)   #captures video from webcam     find resolution and frame rate (10 to 15 frames max)
 
-cam.set(cv2.cv.CV_CAP_PROP_FPS, 10)
+cam.set(cv2.CAP_PROP_FPS, 10)
 
 
 def make_1080p():
